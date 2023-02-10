@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+    <!-- 引入socket.io -->
+    <link rel="stylesheet" href="main.css">
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading"></div>
+    </div>
+
+    <div class="user-info-container">
+        <!-- <div class="user-info-box">
+            <img class="user-info-avatar" src=""/>
+            <div class="user-info-name">admin</div>
+            <input class="user-info-description" id="user-info-edit" value="this is dad"/>
+        </div> -->
+    </div>
+
+    <div class="create-group-container">
+        <div class="create-group-box">
+            <div class="create-group-section-one">
+                群聊名称：<input class="create-group-name"/>
+                <div class="create-group-subbmit-btn">创建群聊</div>
+                <div class="create-group-reset">清空选择</div>
+            </div>
+            
+            <div class="create-group-member-select">
+                <!-- <div class="create-group-member-select-item">
+                    <div class="create-group-check-box"></div>
+                    <div class="create-group-member-icon"></div>
+                    <div class="create-group-member-name">name</div>
+                </div> -->
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="side-bar">
+            <div class="side-bar-head">
+                <div class="side-bar-head-close"></div>
+                <div class="side-bar-title">邀请</div>
+                <div class="empty"></div>
+            </div>
+            <div class="side-bar-nav">
+                <div class="side-bar-nav-btn fagNav-btn-active" id="side-bar-friend">好友</div>
+                <div class="side-bar-nav-btn" id="side-bar-group">群聊</div>
+            </div>
+            <div class="side-bar-main" id="friend-apps">
+                 <!-- <div class="apps-item">
+                     <div class="apps-item-left">
+                        <img class="apps-item-avatar" src=""/>
+                        <div calss="apps-item-name">test</div>
+                    </div>
+                    <div class="apps-item-right">
+                        <div class="apps-item-agree"></div>
+                        <div class="apps-item-reject"></div>
+                    </div>
+                </div> -->
+            </div>
+            <div class="side-bar-main" id="group-apps">
+                <!-- <div class="apps-item">
+                     <div class="apps-item-left">
+                        <img class="apps-item-avatar" src=""/>
+                        <div calss="apps-item-name">test</div>
+                    </div>
+                    <div class="apps-item-right">
+                        <div class="apps-item-agree"></div>
+                        <div class="apps-item-reject"></div>
+                    </div>
+                </div>
+                <div class="arrow">申请加入</div>
+                <div class="apps-item">
+                    <div class="apps-item-left">
+                       <img class="apps-item-avatar" src=""/>
+                       <div calss="apps-item-name">test</div>
+                   </div>
+                   <div class="apps-item-right">
+                   </div>
+               </div> -->
+            </div> 
+        </div>
+        <div class="headbar">
+            <div class="head-main">
+                <div class='logo'>LOGO</div>
+                <div class="head-info">
+                    <div class="my-info">
+                        <img class="my-avatar" src=""/>
+                        <div class="my-name"></div>
+                    </div>
+                    <div class='my-else'>
+                        <div class="create-group-icon"></div>
+                        <div class="alert-box">
+                            <div class="alert"></div>
+                            <div class="red-point-box">
+                                <div class="red-point"></div>
+                            </div>
+                        </div>
+                        <div class="menu-box">
+                            <div class="menu-icon"></div>
+                            <div class="menu-items-box">
+                                <div class="menu-items">
+                                    <div class="menu-item" id="menu-logout">登出</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="friendAndGroup-container">
+                <div class="friendAndGroup">
+                    <!-- 之后简称fag -->
+                    <div class="fagNav">
+                        <div class="fagNav-btn fagNav-btn-active" id="myFriends">好友</div>
+                        <div class="fagNav-btn" id="myGroups">群聊</div>
+                    </div>
+                    <div class="fagMain">
+                        <div class="fagScroll">
+                            <!-- 隐藏滚动条 -->
+                            <div class="fag-item-box" id="friend-list">
+                                <!-- <div class="fag-item">
+                                    <img class="fag-avator" src=""/>
+                                    <div calss="fag-name">test</div>
+                                </div> -->
+                            </div>
+                            <div class="fag-item-box" id="group-list">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-container">
+                <div class="chat-default">请选择聊天对象</div>
+                <div class="chat">
+                    <div class="chat-head">
+                        <div class="back">Back</div>
+                        <div class="room-name">Name</div>
+                        <div class="more">More</div>
+                    </div>
+                    <div class="chat-main">
+                        <div class="chat-content">
+
+                        </div>
+                    </div>
+                    <div class="chat-form-box">
+                        <div class="chat-form-head">
+                            <div id="send-file"></div>
+                            <div id="send-img"></div>
+                        </div>
+                        <div class="chat-form">
+                            <textarea class="chat-input" rows="4"></textarea>
+                            <div class="chat-btn" id="send-chat">Send</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="userCard-container">
+                <input class="search" placeholder="uid/user name/group name">
+                <div class="search-options">
+                    <div class="search-button" id="find-user">寻找用户</div>
+                    <div class="search-button" id="find-group">寻找群聊</div>
+                </div>
+                <div class="search-res">
+                    <!-- <div class="search-res-item" id="123456789">
+                        <div class="search-res-left">
+                            <img class="search-res-avatar" src=""/>
+                            <div calss="search-res-name">test</div>
+                        </div>
+                        <div class="search-res-option"></div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="main.js"></script>
+<!-- socket 逻辑 -->
+<script src="./script/interact.js"></script>
+<!-- 页面交互逻辑 -->
+</html>

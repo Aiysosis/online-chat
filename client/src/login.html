@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style/login.css">
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <title>Login</title>
+</head>
+<body>
+  <div class="container" id="app">
+  <form action="" class="login">
+    <p>Login</p>
+    <input type="text" placeholder="用户名" autocomplete="false" id="userName">
+    <input type="password" placeholder="密码" autocomplete="false" id="password">
+    <div class="info">
+      <div class="infoText">注册</div>
+    </div>
+    <input type="button" class="btn" value="登 录">
+  </form>
+  </div>
+</body>
+<script>
+    // $('input').focus(()=>{
+    //     $('.infoText').html("");//清空提示
+    // })
+
+    $('.infoText').click(()=>{
+        event.stopPropagation();//阻止冒泡
+        console.log(1);
+        window.location.href=('http://localhost:3005/register.html');
+    })
+
+    $('.btn').click(()=>{
+        event.stopPropagation();//阻止冒泡
+        let userName=$('#userName').val();
+        let password=$('#password').val();
+        console.log(userName,password);
+        if(userName != '' && password != ''){
+            $.ajax({
+                "url": "http://localhost:3000/users/login",
+                "method": "POST",
+                "timeout": 0,
+                "headers": {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                "data": {
+                    "userName": userName,
+                    "password": password
+                },
+                success:(res)=>{
+                    console.log(res);
+                    window.location.href=('http://localhost:3005/index.html?uid='+res.uid);
+                },
+                error:(err)=>{
+                    alert('用户名或密码错误');
+                }
+            })
+        }
+        else{
+            alert("用户名和密码不能为空");
+        }
+    })
+</script>
+</html>

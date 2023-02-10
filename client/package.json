@@ -1,0 +1,21 @@
+{
+  "name": "socket.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev":"node-dev app.js"
+  },
+  "author": "Aiysosis",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "socket.io": "^4.4.0",
+    "sequelize": "^6.12.0-beta.1",
+    "mysql2": "^2.3.3"
+  },
+  "devDependencies": {
+    "node-dev": "^7.1.0"
+  }
+}

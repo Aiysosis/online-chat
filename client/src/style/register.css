@@ -1,0 +1,145 @@
+*{
+    user-select: none;
+    /* 不让用户选中网页元素 */
+}
+
+
+html,body{
+    width:100%;
+    height:100%;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    background-color: gray;
+    width:100%;
+    height:100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment:fixed;
+    background-position: center;
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.login{
+    width:400px;
+    height:400px;
+    box-sizing: border-box;
+    background-color: whitesmoke;
+    display:flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items: center;
+    border-radius: 25px;
+    padding:5px;
+    padding-bottom:50px;
+}
+
+#greet{
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.inputInfo{
+    box-sizing: border-box;
+    height:48px;
+    width:86%;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction:column;
+    justify-content: start;
+    align-items:flex-start;
+    border:none;
+    border-bottom: 2px solid silver;
+}
+
+input{
+    box-sizing: border-box;
+    width:100%;
+    height:46px;
+    background-color: whitesmoke;
+    outline:none;
+    border:none;
+    font-size: 15x;
+    z-index: 2;
+}
+
+.info{
+    box-sizing: border-box;
+    margin-bottom: -18px; 
+    margin-top: 2px;
+    height:15px;
+    width:50%;
+    background-color:whitesmoke;
+    font-size: 12px;
+    color:gray;
+    z-index: 3;
+}
+
+.info:hover{
+    color:#244596;
+}
+
+.back{
+    box-sizing: border-box;
+    margin-top: 3px;
+    margin-bottom: -10px;
+    width:86%;
+    font-size: 12px;
+    color:gray;
+}
+
+.back:hover{
+    color:#244596;
+}
+
+.btn{
+    box-sizing: border-box;
+    color: white;
+    font-size: 18px;
+    background-color: #244596;
+    margin-top:25px;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.btn:hover{
+    background-color: #2f57bd;
+}
+
+#greet{
+    box-sizing: border-box;
+    margin-bottom: 5px;
+}
+
+.on{
+    background-color: #244596;
+}
+
+.turning{
+    box-sizing: border-box;
+    height:15px;
+    margin:0;
+    margin-bottom: -5px;
+    margin-top: 5px;
+    width:86%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.turningButton{
+    box-sizing: border-box;
+    height:15px;
+    margin:0;
+    margin-bottom: -15px;
+    color:grey;
+    font-size: 13px;
+    
+}

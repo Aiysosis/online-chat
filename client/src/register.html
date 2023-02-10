@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/register.css">
+  <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+  <title>Register</title>
+</head>
+<body>
+  <div class="container" id="app">
+  <form action="" class="login">
+    <p id="greet">Hi!</p>
+
+    <div class="inputInfo">
+    <input type="text" placeholder="用户名" autocomplete="false" id="userName">
+    <div class="info" id="usernameInfo"></div>
+    </div>
+
+    <div class="inputInfo">
+      <input type="password" placeholder="密码" autocomplete="false" id="password">
+      <div class="info" id="passwordInfo"></div>
+    </div>
+
+    <div class="back">登陆</div>
+
+    <input type="button" class="btn" value="注 册">
+  </form>
+  </div>
+</body>
+<script>
+
+  $('.back').click(()=>{
+    event.stopPropagation();//阻止冒泡
+    window.location.href=('http://localhost:3005/login.html');
+  })
+
+
+  $('.btn').click(()=>{
+    event.stopPropagation();//阻止冒泡
+    let userName=$('#userName').val();
+    let password=$('#password').val();
+    console.log(userName,password);
+    if(userName != '' && password != ''){
+      //
+      $.ajax({
+          "url": "http://localhost:3000/users",
+          "method": "POST",
+          "timeout": 0,
+          "headers": {
+              "Content-Type": "application/x-www-form-urlencoded"
+          },
+          "data": {
+              "userName": userName,
+              "password": password
+          },
+          success:(res)=>{
+              console.log(res);
+              alert("注册成功");
+              window.location.href=('http://localhost:3005/index.html?uid='+res.uid);
+          },
+          error:(err)=>{
+              alert('用户名已存在');
+          }
+      })
+      }
+      else{
+          alert("用户名和密码不能为空");
+      }
+  })
+</script>
+</html>
